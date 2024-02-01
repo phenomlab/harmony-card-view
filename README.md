@@ -1,0 +1,1 @@
+The functions.js file and card.css when coupled together and used under NodeBB with the Harmony theme will allow you to toggle between a new card view, and the default list view. Toggle does not display on mobile, and will only be active on desktop estate larger than 1200px.
