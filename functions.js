@@ -16,7 +16,7 @@ function cardView() {
                     $('#enableCardView').prop('checked', true);
                 }
             }
-            // Append of remove the css file when the checkbox changes state
+            // Append or remove the css file when the checkbox changes state
             $('#enableCardView').on('change', function() {
                 var isChecked = $(this).is(':checked');
                 var theTooltip = isChecked ? "List View" : "Card View"; // Update tooltip message
