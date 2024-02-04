@@ -1,33 +1,31 @@
 @media (min-width:1200px) {
-ul.topics-list li, li[component="chat/message"], [component="chat/recent/room"], div#users-container a {
+.category-card ul.topics-list li, .category-card li[component="chat/message"], .category-card [component="chat/recent/room"], div#users-container a {
     padding: 20px !important;
     width: 32%;
-    max-height: 220px;
-    min-height: 220px;
+    max-height: 225px;
+    min-height: 225px;
     margin: 0;
     margin-left: 10px;
     margin-bottom: 10px;
     float: left;
 }
 /* You probably do not need this as it is required for sudonix.org which has a heavily customized theme - remove the below block if odd behaviour */
-[component=category], .categories-list, [component="groups/container"], .users-container {
-    visibility: hidden;
+.category-card [component=category], .categories-list, .category-card [component="groups/container"], .users-container {
     margin-left: -10px;
     margin-right: -22px;
 }
-[component="topic/header"] .text-reset, [component="categories/category"] .text-reset {
+.category-card [component="topic/header"] .text-reset, .category-card [component="categories/category"] .text-reset {
     font-weight: 500;
-    font-family: "Montserrat";
     font-size: 18px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     white-space: pre-wrap;
     margin-right: 20px;
 }
-.lastpost {
-    margin-left: -366px;
+.category-card .lastpost {
+    margin-left: -374px;
     margin-top: 0px;
     width: 365px;
     overflow: hidden;
@@ -35,60 +33,63 @@ ul.topics-list li, li[component="chat/message"], [component="chat/recent/room"],
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     white-space: pre-wrap;
-    height: 50% !important;
+    height: 47% !important;
 }
-.lastpost a img {
-    position: relative;
-    top: 27px;
-    left: -180px;
+.category-card .lastpost a img {
+    margin-top: 12px;
+    margin-left: -182px;
 }
-.lastpost .post-content {
-    margin-top: -35px;
+.category-card .lastpost .post-content {
+    margin-top: 30px;
     width: 290px;
     max-width: 300px;
+    position: absolute !important;
+    margin-left: 60px !important;
 }
-.lastpost .timeago {
-    margin-top: 115px !important;
-    margin-left: -230px !important;
-    position: absolute;
-}
-.line-clamp-sm-2 {
+
+.category-card .line-clamp-sm-2 {
     margin-left: 50px !important;
 }
-[component="topic/labels"] .timeago {
-    position: absolute;
-    bottom: -25px;
-    left: -56px;
-    display: none !important;
+.category-card [component="topic/labels"] .timeago {
+   display: none !important;
 }
-h3[component="topic/header"] {
-    min-height: 75px;
+.category-card .text-muted.timeago {
+    position: absolute;
+    margin-top: 112px;
+    margin-left: -206px;
+}
+.category-card h3[component="topic/header"] {
+    min-height: 55px;
     max-height: 75px;
     width: 300px !important;
     margin-right: 20px !important;
 }
-.meta.stats {
+.category-card .meta.stats {
     margin-top: 147px;
     width: 200px !important;
     margin-left: -28px;
 }
-.stats .fs-5 {
+.category-card .stats .fs-5 {
     font-size: 80% !important;
 }
-span[component="topic/labels"] {
-    margin-left: -55px;
-    margin-top: 10px;
-    width: 380px !important;
+.category-card span[component="topic/labels"] {
+    margin-left: 10px;
+    margin-top: 18px;
+    width: 330px !important;
 }
-img.topic-thumb.rounded-1.bg-light {
+.category-card img.topic-thumb.rounded-1.bg-light {
     display: none;
 }
-[data-widget-area="footer"] {
+.category-card [data-widget-area="footer"] {
     margin-bottom: 60px;
 }
-i[component="topic/select"] {
-    top: 135px;
+.category-card i[component="topic/select"] {
+    top: 110px;
     position: relative;
     left: 0px;
+}
+.category-card .lastpost .no-reply {
+    margin-top: 15px !important;
+    margin-left: -130px;
 }
 }
