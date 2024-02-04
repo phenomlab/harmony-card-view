@@ -1,6 +1,7 @@
 function cardView() {
     $(document).ready(function() {
-        var href = "/path/to/card.css";
+        var string = generateRandomString(10);
+        var href = "/assets/customcss/card.css?ver=" + string;
         // Check if the screen width is 1200px or more
         if ($(window).width() >= 1200) {
             // Check if the dropdown already exists
@@ -22,12 +23,21 @@ function cardView() {
                 var theTooltip = isChecked ? "List View" : "Card View"; // Update tooltip message
                 if (isChecked) {
                     console.log('Card view is active.');
+                    $('.category').addClass("category-card");
+                    $("div.ps-2.text-xs").each(function() {
+                        // Check if the text includes the desired string
+                        var text = $(this).text().trim();
+                        if (text == "No one has replied") {
+                            $(this).addClass("no-reply");
+                        }
+                    });
                     $('<link rel="stylesheet" type="text/css" href="' + href + '">').appendTo("head");
                 } else {
                     console.log('Card view is inactive.');
                     var cssLink = $('link[href="' + href + '"]');
                     if (cssLink.length) {
                         cssLink.remove();
+                        $('.category').removeClass("category-card");
                     }
                 }
 
@@ -47,20 +57,29 @@ function cardView() {
     });
 }
 
+function generateRandomString(length) {
 
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-$(window).on('action:ajaxify.end', function(data) {
-    $(document).ready(function() {
+    for (var i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+}
+$(document).ready(function() {
+    $(window).on('action:ajaxify.end', function(data) {
         cardView();
     });
 });
-$(window).on('action:posts.edited', function(data) {
-    $(document).ready(function() {
+$(document).ready(function() {
+    $(window).on('action:posts.edited', function(data) {
         cardView();
     });
 });
-$(window).on('action:posts.loaded', function(data) {
-    $(document).ready(function() {
+$(document).ready(function() {
+    $(window).on('action:posts.loaded', function(data) {
         cardView();
     });
 });
