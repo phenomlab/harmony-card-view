@@ -1,9 +1,9 @@
 @media (min-width:1200px) {
 .category-card ul.topics-list li, .category-card li[component="chat/message"], .category-card [component="chat/recent/room"], div#users-container a {
-    padding: 20px !important;
+    padding: inherit !important;
     width: 32%;
-    max-height: 230px;
-    min-height: 230px;
+    max-height: 210px;
+    min-height: 210px;
     margin: 0;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -11,16 +11,16 @@
 }
 .category-card [component="topic/header"] .text-reset, .category-card [component="categories/category"] .text-reset {
     font-weight: 500;
-    font-family: "Montserrat";
     font-size: 18px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
+    white-space: pre-wrap;
     margin-right: 20px;
 }
 .category-card .lastpost {
-    margin-left: -372px;
+    margin-left: -391px;
     margin-top: 0px;
     width: 365px;
     overflow: hidden;
@@ -28,39 +28,39 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     white-space: pre-wrap;
-    height: 75% !important;
+    height: 84% !important;
 }
 .category-card .lastpost a img {
     margin-top: 12px;
-    margin-left: 30px;
+    margin-left: -182px;
 }
 .category-card .lastpost .post-content {
-    margin-top: -35px;
+    margin-top: 30px;
     width: 290px;
     max-width: 300px;
+    position: absolute !important;
+    margin-left: 55px !important;
 }
-.category-card .lastpost .timeago {
-    margin-top: 115px !important;
-    margin-left: -230px !important;
-    position: absolute;
-}
+
 .category-card .line-clamp-sm-2 {
     margin-left: 50px !important;
 }
 .category-card [component="topic/labels"] .timeago {
+   display: none !important;
+}
+.category-card .text-muted.timeago {
     position: absolute;
-    bottom: -25px;
-    left: -56px;
-    display: none !important;
+    margin-top: 112px;
+    margin-left: -187px;
 }
 .category-card h3[component="topic/header"] {
-    min-height: 75px;
+    min-height: 55px;
     max-height: 75px;
     width: 300px !important;
     margin-right: 20px !important;
 }
 .category-card .meta.stats {
-    margin-top: 150px;
+    margin-top: 147px;
     width: 200px !important;
     margin-left: -28px;
 }
@@ -68,11 +68,9 @@
     font-size: 80% !important;
 }
 .category-card span[component="topic/labels"] {
-    margin-left: 0px;
-    margin-top: 10px;
-    width: 340px !important;
-    overflow: hidden;
-    max-width: 340px !important;
+    margin-left: 10px;
+    margin-top: 18px;
+    width: 330px !important;
 }
 .category-card img.topic-thumb.rounded-1.bg-light {
     display: none;
@@ -81,8 +79,12 @@
     margin-bottom: 60px;
 }
 .category-card i[component="topic/select"] {
-    top: 131px;
+    top: 110px;
     position: relative;
     left: 0px;
+}
+.category-card .lastpost .no-reply {
+    margin-top: 15px !important;
+    margin-left: -130px;
 }
 }
