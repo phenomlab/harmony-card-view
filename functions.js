@@ -1,7 +1,5 @@
 function cardView() {
     $(document).ready(function() {
-        var string = generateRandomString(10);
-        var href = "/assets/customcss/card.css?ver=" + string;
         // Check if the screen width is 1200px or more
         if ($(window).width() >= 1200) {
             // Check if the dropdown already exists
@@ -24,23 +22,29 @@ function cardView() {
                 if (isChecked) {
                     console.log('Card view is active.');
                     $('.category').addClass("category-card");
-                    $("div.ps-2.text-xs").each(function() {
-                        // Check if the text includes the desired string
-                        var text = $(this).text().trim();
-                        if (text == "No one has replied") {
-                            $(this).addClass("no-reply");
-                        }
-                    });
-                    $('<link rel="stylesheet" type="text/css" href="' + href + '">').appendTo("head");
+
+                    // Remove old CSS link
+                    $('link[id="cardcss"]').remove();
+
+                    // Append new CSS link with a fresh timestamp
+                    var string = new Date().getTime();
+                    var href = "/assets/customcss/card.css?ver=" + string;
+                    $('<link id="cardcss" rel="stylesheet" type="text/css" href="' + href + '">').appendTo("head");
                 } else {
                     console.log('Card view is inactive.');
-                    var cssLink = $('link[href="' + href + '"]');
+                    var cssLink = $('link[id="cardcss"]');
                     if (cssLink.length) {
                         cssLink.remove();
                         $('.category').removeClass("category-card");
                     }
                 }
-
+                $("div.ps-2.text-xs").each(function() {
+                    // Check if the text includes the desired string
+                    var text = $(this).text().trim();
+                    if (text == "No one has replied") {
+                        $(this).addClass("no-reply");
+                    }
+                });
                 // Update the tooltip title
                 $(this).attr('data-original-title', theTooltip).tooltip('dispose').tooltip({
                     placement: 'bottom',
@@ -57,17 +61,6 @@ function cardView() {
     });
 }
 
-function generateRandomString(length) {
-
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-
-    return text;
-}
 $(document).ready(function() {
     $(window).on('action:ajaxify.end', function(data) {
         cardView();
