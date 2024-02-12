@@ -22,7 +22,8 @@ function cardView() {
                 if (isChecked) {
                     console.log('Card view is active.');
                     $('.category').addClass("category-card");
-
+                    // Remove old CSS link
+                    $('link[id="cardcss"]').remove();
                     // Append new CSS link with a fresh timestamp
                     var string = new Date().getTime();
                     var href = "/assets/customcss/card.css?ver=" + string;
