@@ -23,9 +23,6 @@ function cardView() {
                     console.log('Card view is active.');
                     $('.category').addClass("category-card");
 
-                    // Remove old CSS link
-                    $('link[id="cardcss"]').remove();
-
                     // Append new CSS link with a fresh timestamp
                     var string = new Date().getTime();
                     var href = "/assets/customcss/card.css?ver=" + string;
@@ -38,13 +35,6 @@ function cardView() {
                         $('.category').removeClass("category-card");
                     }
                 }
-                $("div.ps-2.text-xs").each(function() {
-                    // Check if the text includes the desired string
-                    var text = $(this).text().trim();
-                    if (text == "No one has replied") {
-                        $(this).addClass("no-reply");
-                    }
-                });
                 // Update the tooltip title
                 $(this).attr('data-original-title', theTooltip).tooltip('dispose').tooltip({
                     placement: 'bottom',
@@ -61,18 +51,18 @@ function cardView() {
     });
 }
 
-$(document).ready(function() {
-    $(window).on('action:ajaxify.end', function(data) {
-        cardView();
+function applyNoReplyClass() {
+    $("[component='topic/teaser'] .lastpost .text-xs").each(function() {
+        if ($(this).text().trim() === "No one has replied") {
+            $(this).addClass("no-reply");
+        }
     });
-});
+}
+
 $(document).ready(function() {
-    $(window).on('action:posts.edited', function(data) {
+    // Ensure cardView and applyNoReplyClass are called after AJAX operations
+    $(window).on('action:ajaxify.end action:topics.loaded', function() {
         cardView();
-    });
-});
-$(document).ready(function() {
-    $(window).on('action:posts.loaded', function(data) {
-        cardView();
+        applyNoReplyClass(); // Make sure this is called to apply changes to dynamically loaded content
     });
 });
