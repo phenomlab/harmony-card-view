@@ -21,17 +21,10 @@ function cardView() {
                 var theTooltip = isChecked ? "List View" : "Card View"; // Update tooltip message
                 if (isChecked) {
                     console.log('Card view is active.');
-                    // Append new CSS link with a fresh timestamp
-                    //var string = 123; //new Date().getTime();
-                    //var href = "/assets/customcss/card.css?ver=" + string;
                     $('.category').addClass("category-card");
                 } else {
                     console.log('Card view is inactive.');
-                    //var cssLink = $('link[id="cardcss"]');
-                    //if (cssLink.length) {
-                    //    cssLink.remove();
                         $('.category').removeClass("category-card");
-                    //}
                 }
                 // Update the tooltip title
                 $(this).attr('data-original-title', theTooltip).tooltip('dispose').tooltip({
