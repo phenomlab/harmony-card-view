@@ -21,18 +21,17 @@ function cardView() {
                 var theTooltip = isChecked ? "List View" : "Card View"; // Update tooltip message
                 if (isChecked) {
                     console.log('Card view is active.');
-                    $('.category').addClass("category-card");
                     // Append new CSS link with a fresh timestamp
-                    var string = new Date().getTime();
-                    var href = "/assets/customcss/card.css?ver=" + string;
-                    $('<link id="cardcss" rel="stylesheet" type="text/css" href="' + href + '">').appendTo("head");
+                    //var string = 123; //new Date().getTime();
+                    //var href = "/assets/customcss/card.css?ver=" + string;
+                    $('.category').addClass("category-card");
                 } else {
                     console.log('Card view is inactive.');
-                    var cssLink = $('link[id="cardcss"]');
-                    if (cssLink.length) {
-                        cssLink.remove();
+                    //var cssLink = $('link[id="cardcss"]');
+                    //if (cssLink.length) {
+                    //    cssLink.remove();
                         $('.category').removeClass("category-card");
-                    }
+                    //}
                 }
                 // Update the tooltip title
                 $(this).attr('data-original-title', theTooltip).tooltip('dispose').tooltip({
@@ -57,7 +56,13 @@ function applyNoReplyClass() {
         }
     });
 }
-
+$(document).ready(function() {
+    // Ensure cardView and applyNoReplyClass are called after AJAX operations
+    $(window).on('load', function() {
+        console.log("On load triggered");
+$('#homeclick').trigger('click');
+    });
+});
 $(document).ready(function() {
     // Ensure cardView and applyNoReplyClass are called after AJAX operations
     $(window).on('action:ajaxify.end action:topics.loaded', function() {
