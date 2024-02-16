@@ -32,7 +32,7 @@
     white-space: pre-wrap;
     height: 84% !important;
 }
-.category-card .lastpost a img, span.avatar.avatar-tooltip.not-responsive.avatar-rounded {
+.category-card .lastpost a img, .category-card span.avatar.avatar-tooltip.not-responsive.avatar-rounded {
     margin-top: 10px;
     margin-left: -185px; /* note that you may need to reduce this accordingly */
 }
