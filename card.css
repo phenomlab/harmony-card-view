@@ -1,7 +1,7 @@
 /* The below CSS code is to be placed in /admin/appearance/customise/css */
 
 @media (min-width:1200px) {
-.category-card ul.topics-list li, .category-card li[component="chat/message"], .category-card [component="chat/recent/room"], div#users-container a {
+.category-card ul.topics-list li  {
     padding: inherit !important;
     width: 32%;
     max-height: 210px;
