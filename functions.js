@@ -2,6 +2,10 @@ function cardView() {
     $(document).ready(function() {
         // Check if the screen width is 1200px or more
         if ($(window).width() >= 1200) {
+            if ($('#category-wrapper').length === 0) {
+                var newDiv = '<div id="category-wrapper"></div>';
+                $('ul[component="category"]').wrapAll(newDiv);
+            }
             // Check if the dropdown already exists
             if ($('#enableCardView').length === 0) {
                 var cardView = $('<div class="threads-wrapper"><i class="fa fa-fw fa-bars left"></i><form class="form"><div class="form-check form-switch sticky-tools-bar"> \
@@ -21,10 +25,11 @@ function cardView() {
                 var theTooltip = isChecked ? "List View" : "Card View"; // Update tooltip message
                 if (isChecked) {
                     console.log('Card view is active.');
-                    $('.category').addClass("category-card");
+                    //$('.category').addClass("category-card");
+                    $('#category-wrapper').addClass("category-card");
                 } else {
                     console.log('Card view is inactive.');
-                        $('.category').removeClass("category-card");
+                    $('#category-wrapper').removeClass("category-card");
                 }
                 // Update the tooltip title
                 $(this).attr('data-original-title', theTooltip).tooltip('dispose').tooltip({
@@ -49,13 +54,6 @@ function applyNoReplyClass() {
         }
     });
 }
-$(document).ready(function() {
-    // Ensure cardView and applyNoReplyClass are called after AJAX operations
-    $(window).on('load', function() {
-        console.log("On load triggered");
-$('#homeclick').trigger('click');
-    });
-});
 $(document).ready(function() {
     // Ensure cardView and applyNoReplyClass are called after AJAX operations
     $(window).on('action:ajaxify.end action:topics.loaded', function() {
